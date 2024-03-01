@@ -59,7 +59,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/data")
+      .get("http://localhost:3000/data")
       .then((response) => {
         const parsedData = parseInsightsData(response.data);
         setInsightsData(parsedData);
@@ -99,7 +99,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/data")
+      .get("http://localhost:3000/data")
       .then((response) => {
         const parsedGeoData = geoGraphData(response.data);
         console.log("parsedGeoData: ", parsedGeoData);
