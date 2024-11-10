@@ -5,6 +5,7 @@ import { tokens } from "../../theme";
 import { geoGraphData } from "../../utils/parseGeoData";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import blackcofferData from "../../data/blackcofferData";
 
 
 const Geography = () => {
@@ -14,16 +15,12 @@ const Geography = () => {
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/data")
-      .then((response) => {
-        const parsedData = geoGraphData(response.data);
-        console.log("parsedData: ", parsedData);
-        setFilteredData(parsedData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const parsedData = geoGraphData(blackcofferData);
+      setFilteredData(parsedData);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
 

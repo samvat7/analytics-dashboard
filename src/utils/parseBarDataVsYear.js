@@ -1,4 +1,6 @@
-import { blackcofferData as data } from "../data/blackcofferData";
+import blackcofferData from "../data/blackcofferData";
+
+const data = blackcofferData;
 
 //bar graph data vs year: country name is mapped to a object having id key has item.year value , remaining keys are sums of item.intensity for each sector
 

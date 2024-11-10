@@ -13,9 +13,9 @@ import BarChart from "../../components/BarChart.jsx";
 import StatBox from "../../components/StatBox.jsx";
 import { useState, useEffect } from "react"; // Combined import
 import { parseInsightsData } from "../../utils/parseInsightsData.js"; // Assuming this is a JS file
-// import { blackcofferData as data } from "../../data/blackcofferData.js";
 import axios from "axios";
 import { geoGraphData } from "../../utils/parseGeoData.js";
+import blackcofferData from "../../data/blackcofferData";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -58,15 +58,12 @@ const Dashboard = () => {
   // fetch data from the backend
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/data")
-      .then((response) => {
-        const parsedData = parseInsightsData(response.data);
-        setInsightsData(parsedData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const parsedData = parseInsightsData(blackcofferData);
+      setInsightsData(parsedData);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const [currentCountryIndex, setCurrentCountryIndex] = useState(0);
@@ -98,16 +95,12 @@ const Dashboard = () => {
   const [filteredGeoData, setFilteredGeoData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/data")
-      .then((response) => {
-        const parsedGeoData = geoGraphData(response.data);
-        console.log("parsedGeoData: ", parsedGeoData);
-        setFilteredGeoData(parsedGeoData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const parsedData = geoGraphData(blackcofferData);
+      setFilteredGeoData(parsedData);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
 

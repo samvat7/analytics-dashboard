@@ -1,9 +1,10 @@
 // retrive data from database
+import { blackcofferData } from "../data/blackcofferData";
 
 export const getDataFromDB = async () => {
-    const response = await fetch("http://localhost:3000/data");
-    const data = await response.json();
-    return data;
-    }
-
-    
+  try {
+    return blackcofferData;
+  } catch (error) {
+    console.log(error);
+  }
+};

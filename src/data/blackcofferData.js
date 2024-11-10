@@ -1,4 +1,4 @@
-export const blackcofferData = [
+const blackcofferData = [
     {
         "end_year": "",
         "intensity": 6,
@@ -18999,4 +18999,6 @@ export const blackcofferData = [
         "title": "Earth's surface temperature could exceed historical values as early as 2047.",
         "likelihood": 2
     }
-]
+];
+
+export default blackcofferData;

@@ -7,8 +7,7 @@ import { useMemo } from "react"; // Import useMemo for data transformation
 import { useState } from "react"; 
 import { useEffect } from "react";
 import axios from "axios";
-
-
+import blackcofferData from "../../data/blackcofferData";
 
 const Insights = () => {
   const theme = useTheme();
@@ -23,16 +22,13 @@ const Insights = () => {
   //using axios to get data from the server, then parsing it, then filtering it to get the data for the current country
   var insightsData = [];
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/data")
-      .then((response) => {
-        parsedData = response.data;
-        setFilteredData(parsedData);
-        console.log("parsedData: ", parsedData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const parsedData = blackcofferData;
+      setFilteredData(parsedData);
+      console.log("parsedData: ", parsedData);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   //in filterData, rename the _id key to id

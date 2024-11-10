@@ -1,4 +1,6 @@
-import { blackcofferData as data } from "../data/blackcofferData";
+import blackcofferData from "../data/blackcofferData";
+
+const data = blackcofferData;
 
 export const parsedCountryList = [];
 

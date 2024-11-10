@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { parseInsightsData } from "../../utils/parseInsightsData";
 import { parseRadarData } from "../../utils/parseRadarData";
+import blackcofferData from "../../data/blackcofferData";
 
 
 const Pie = () => {
@@ -29,15 +30,12 @@ const Pie = () => {
   //using axios to get data from the server, then parsing it, then filtering it to get the data for the current country
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/data")
-      .then((response) => {
-        parsedData = parseRadarData(response.data);
-        setFilteredData(parsedData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const parsedData = parseInsightsData(blackcofferData);
+      setFilteredData(parsedData);
+    } catch (error) {
+      console.log(error);
+    } 
   }, []);
 
   return (

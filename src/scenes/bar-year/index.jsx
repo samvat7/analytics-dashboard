@@ -10,6 +10,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import blackcofferData from "../../data/blackcofferData";
 
 const BarYear = () => {
   var parsedData = [];
@@ -21,17 +22,14 @@ const BarYear = () => {
   //using axios to get data from the server, then parsing it, then filtering it to get the data for the current country
   
   useEffect(() => {
-    console.log("useEffect entered")
-    axios
-      .get("http://localhost:3000/data")
-      .then((response) => {
-        parsedData = parseBarGraphDataVsYear(response.data);
-        console.log("BarYearVsGraphData: ", parsedData);
-        setFilteredData(parsedData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    console.log("useEffect entered");
+    try {
+      const parsedData = parseBarGraphDataVsYear(blackcofferData);
+      console.log("BarYearVsGraphData: ", parsedData);
+      setFilteredData(parsedData);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const handleChange = (event) => {

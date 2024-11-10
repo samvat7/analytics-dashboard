@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import * as React from "react";
+import blackcofferData from "../../data/blackcofferData";
 
 const Line = () => {
   var parsedData = [];
@@ -22,17 +23,12 @@ const Line = () => {
   //using axios to get data from the server, then parsing it, then filtering it to get the data for the current country
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/data")
-      .then((response) => {
-        parsedData = parseInsightsData(response.data);
-        const lineGraphData = parsedData.lineGraphData;
-        console.log("lineGraphData: ", lineGraphData);
-        setFilteredData(lineGraphData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const parsedData = parseInsightsData(blackcofferData);
+      setFilteredData(parsedData);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const handleChange = (event) => {
