@@ -11,6 +11,7 @@ const RadarChart = ({ isDashboard = false, data,country }) => {
   // filter the data based on the country
 
   const radarGraphData = data;
+  
 
   const filteredData = radarGraphData.filter(
     (dataPoint) => dataPoint.country === country.toString()

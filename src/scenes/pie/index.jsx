@@ -35,7 +35,7 @@ const Pie = () => {
       setFilteredData(parsedData);
     } catch (error) {
       console.log(error);
-    } 
+    }
   }, []);
 
   return (
