@@ -110,7 +110,7 @@ const Sidebar = () => {
                   User
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Black Coffer
+                  GGSIPU
                 </Typography>
               </Box>
             </Box>
